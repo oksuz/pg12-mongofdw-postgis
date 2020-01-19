@@ -17,8 +17,10 @@ RUN cd /usr/local/src && \
 RUN cd /usr/local/src && \
   wget https://download.osgeo.org/postgis/source/postgis-3.0.0.tar.gz && \
   tar -zxvf postgis-3.0.0.tar.gz && cd postgis-3.0.0 && \
-  ./configure && make && make install && ldconfig  
+  ./configure && make && make install && ldconfig
 
-RUN apt-get autoremove $BUILD_DEPS
+RUN apt-get autoremove -y $BUILD_DEPS
+
+RUN rm -rf /usr/local/src/*
 
 ENV BUILD_DEPS=
